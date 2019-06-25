@@ -1,19 +1,22 @@
 <?php 
 
-require_once("vendor/autoload.php");
+    require_once("vendor/autoload.php");
 
-$app = new \Slim\Slim();
-
-$app->config('debug', true);
-
-$app->get('/', function() {
+    use Slim\Slim;
+    use BrunoCamacho\Page;
     
-	$sql = new BrunoCamacho\DB\Sql();
-        $results = $sql->select("SELECT * FROM tb_users");
-        echo json_encode($results);
+    $app = new Slim();
+    $app->config('debug', true);
 
-});
+    $app->get('/', function() {
+        
+        $page = new Page();
+        $page->setTpl("index");
 
-$app->run();
+           
+
+    });
+
+    $app->run();
 
  ?>

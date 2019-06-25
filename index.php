@@ -4,6 +4,7 @@
 
     use Slim\Slim;
     use BrunoCamacho\Page;
+    use BrunoCamacho\PageAdmin;
     
     $app = new Slim();
     $app->config('debug', true);
@@ -15,6 +16,12 @@
 
            
 
+    });
+    
+    $app->get('/admin', function(){
+        $page = new PageAdmin();
+        $page->setTpl("index");
+    
     });
 
     $app->run();
